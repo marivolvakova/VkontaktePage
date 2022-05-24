@@ -15,7 +15,7 @@ class ViewController: UIViewController {
         setupLayout()
         setupView()
     }
-    // MARK: Images, labeles, buttons
+    // MARK: - Creation Images
 
     lazy var photoImage: UIImageView = {
         let image = UIImageView()
@@ -27,22 +27,6 @@ class ViewController: UIViewController {
         return image
     }()
     
-    lazy var nameLable: UILabel = {
-        let name = UILabel()
-        name.font = .systemFont(ofSize: 18, weight: .semibold)
-        name.textColor = .white
-        name.text = "Мария Вольвакова"
-        return name
-    }()
-    
-    lazy var statusLable: UILabel = {
-        let status = UILabel()
-        status.text = "Установить статус"
-        status.textColor = .systemCyan
-        status.font = .systemFont(ofSize: 16, weight: .medium)
-        return status
-    }()
-    
     lazy var onlineImage: UIImageView = {
         let image = UIImageView()
         image.image = UIImage(systemName: "iphone.homebutton")
@@ -52,6 +36,30 @@ class ViewController: UIViewController {
         return image
     }()
     
+    lazy var viewLine: UIView = {
+        let view = UIView()
+        view.backgroundColor = .secondaryLabel
+        view.heightAnchor.constraint(equalToConstant: 2).isActive = true
+        view.layer.masksToBounds = true
+        return view
+    }()
+    
+    // MARK: - CREATION LABLES
+    
+    lazy var nameLable: UILabel = {
+        let name = UILabel()
+        name.font = .systemFont(ofSize: 18, weight: .semibold)
+        name.textColor = .white
+        name.text = "Мария Вольвакова"
+        return name
+    }()
+    lazy var statusLable: UILabel = {
+        let status = UILabel()
+        status.text = "Установить статус"
+        status.textColor = .systemCyan
+        status.font = .systemFont(ofSize: 16, weight: .medium)
+        return status
+    }()
     lazy var onlineLable: UILabel = {
         let online = UILabel()
         online.text = "online"
@@ -59,6 +67,8 @@ class ViewController: UIViewController {
         online.font = .systemFont(ofSize: 15, weight: .medium)
         return online
     }()
+    
+    // MARK: - Creation Buttons
     
     lazy var buttonEditing: UIButton = {
         let button = UIButton(type: .system)
@@ -72,13 +82,19 @@ class ViewController: UIViewController {
         return button
     }()
     
-    lazy var viewLine: UIView = {
-        let view = UIView()
-        view.backgroundColor = .secondaryLabel
-        view.heightAnchor.constraint(equalToConstant: 2).isActive = true
-        view.layer.masksToBounds = true
-        return view
-    }()
+    lazy var historyButton = createHorizontalButtons(with: "История", and: "camera")
+    lazy var noteButton = createHorizontalButtons(with: "Запись", and: "square.and.pencil")
+    lazy var photoButton = createHorizontalButtons(with: "Фото", and: "photo")
+    lazy var clipButton = createHorizontalButtons(with: "Клип", and: "play.rectangle")
+    
+    
+    lazy var cityButton = createVerticalButton(with: "Город: Москва", colour: .lightGray, iconImage: "house")
+    lazy var followersButton = createVerticalButton(with: "35 подписчиков", colour: .lightGray, iconImage: "dot.radiowaves.up.forward")
+    lazy var jobButton = createVerticalButton(with: "Указать место работы", colour: .systemCyan, iconImage: "briefcase")
+    lazy var presentButton = createVerticalButton(with: "Получить подарок", colour: .systemPurple, iconImage: "staroflife")
+    lazy var moreButton = createVerticalButton(with: "Подробная информация", colour: .white, iconImage: "i.circle")
+    
+    
     
     func createHorizontalButtons(with title: String, and icon: String ) -> UIButton {
         let button = UIButton(type: .system)
@@ -109,23 +125,8 @@ class ViewController: UIViewController {
         button.configuration?.imagePadding = 10
         return button
     }
-    
-    // MARK: Buttons
-    
-    lazy var historyButton = createHorizontalButtons(with: "История", and: "camera")
-    lazy var noteButton = createHorizontalButtons(with: "Запись", and: "square.and.pencil")
-    lazy var photoButton = createHorizontalButtons(with: "Фото", and: "photo")
-    lazy var clipButton = createHorizontalButtons(with: "Клип", and: "play.rectangle")
-    
-    
-    lazy var cityButton = createVerticalButton(with: "Город: Москва", colour: .lightGray, iconImage: "house")
-    lazy var followersButton = createVerticalButton(with: "35 подписчиков", colour: .lightGray, iconImage: "dot.radiowaves.up.forward")
-    lazy var jobButton = createVerticalButton(with: "Указать место работы", colour: .systemCyan, iconImage: "briefcase")
-    lazy var presentButton = createVerticalButton(with: "Получить подарок", colour: .systemPurple, iconImage: "staroflife")
-    lazy var moreButton = createVerticalButton(with: "Подробная информация", colour: .white, iconImage: "i.circle")
-    
 
-// MARK: Stacks
+// MARK: - Stacks
     
     lazy var parentStack: UIStackView = {
         let stackView = UIStackView()
@@ -177,7 +178,7 @@ class ViewController: UIViewController {
     }()
 
     
-    // MARK: Hierarchy
+    // MARK: - Hierarchy
     
     func setupHierarchy() {
         view.addSubview(parentStack)
